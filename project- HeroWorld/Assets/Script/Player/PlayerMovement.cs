@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
     //di chuyen trai phai
     private float move;
     [SerializeField] private float speed = 5f;
-    [SerializeField] private float jumpForce = 10f;
+    [SerializeField] private float jumpForce = 7f;
 
     // Xet dk nhay
     private bool canJump;
@@ -20,14 +20,14 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask Ground;
 
     // Animation 
-    private enum MovementState { idle, running, jumping, falling}
+    private enum MovementState { idle, running, jumping, falling }
     private MovementState state = MovementState.idle;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
-  
+
     }
 
     // Update is called once per frame
