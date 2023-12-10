@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     private bool canJump;
     public Transform _canJump;
     public LayerMask Ground;
+    private bool doubleJump;
 
     // Animation 
     private enum MovementState { idle, running, jumping, falling }
@@ -52,6 +53,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.Space) && canJump)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+
         }
     }
 
