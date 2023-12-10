@@ -10,9 +10,10 @@ public class PlayerDash : MonoBehaviour
     private float move;
     [SerializeField] private float speed = 5f;
     [SerializeField] private float jumpForce = 8f;
-    [SerializeField] private float dashForce = 10f;  // Adjust the dash force as needed
-    [SerializeField] private float dashDuration = 0.5f;  // Adjust the dash duration as needed
+    [SerializeField] private float dashForce = 8f;
+    [SerializeField] private float dashDuration = 0.5f;
     private bool isDashing = false;
+    private bool hasDashed = false; // Add this variable
 
     private bool canJump;
     public Transform _canJump;
@@ -41,8 +42,9 @@ public class PlayerDash : MonoBehaviour
         Attack();
 
         // Dash input detection
-        if (Input.GetMouseButtonDown(1) && !isDashing)
+        if (Input.GetMouseButtonDown(1) && !isDashing && !hasDashed)
         {
+            anim.SetTrigger("dash");
             StartCoroutine(Dash());
         }
     }
@@ -50,19 +52,15 @@ public class PlayerDash : MonoBehaviour
     IEnumerator Dash()
     {
         isDashing = true;
-
-        // Store the current velocity
+        hasDashed = true; // Set to true when dashing
+        
         Vector2 originalVelocity = rb.velocity;
-
-        // Apply a one-time force for dash
+        
         rb.velocity = new Vector2(rb.velocity.x + (sprite.flipX ? -dashForce : dashForce), rb.velocity.y);
-
-        // Wait for the dash duration
+        
         yield return new WaitForSeconds(dashDuration);
-
-        // Restore the original velocity
+        
         rb.velocity = originalVelocity;
-
         isDashing = false;
     }
 
@@ -70,6 +68,12 @@ public class PlayerDash : MonoBehaviour
     {
         move = Input.GetAxisRaw("Horizontal");
         rb.velocity = new Vector2(move * speed, rb.velocity.y);
+
+        // Reset hasDashed when grounded
+        if (canJump)
+        {
+            hasDashed = false;
+        }
     }
 
     protected virtual void Jump()
@@ -83,7 +87,7 @@ public class PlayerDash : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (canJump || doubleJump)
+            if (canJump || (doubleJump && !hasDashed))
             {
                 rb.velocity = new Vector2(rb.velocity.x, jumpForce);
                 doubleJump = !doubleJump;
