@@ -23,6 +23,12 @@ public class PlayerMovement : MonoBehaviour
     // Animation 
     private enum MovementState { idle, running, jumping, falling }
     private MovementState state = MovementState.idle;
+
+    // Attack
+    bool attack = false;
+    private float timeBetweenAttack = 0.5f; 
+    private float timeSinceAttack;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -89,9 +95,12 @@ public class PlayerMovement : MonoBehaviour
 
     protected virtual void Attack()
     {
-        if (Input.GetMouseButtonDown(0))
+        attack = Input.GetMouseButtonDown(0);
+        timeSinceAttack += Time.deltaTime;
+
+        if (attack && timeSinceAttack >= timeBetweenAttack)
         {
-            // Kích ho?t animation t?n công
+            timeSinceAttack = 0;
             anim.SetTrigger("attack");
         }
     }

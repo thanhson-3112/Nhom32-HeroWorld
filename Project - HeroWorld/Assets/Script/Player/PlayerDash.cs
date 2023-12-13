@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerDash : MonoBehaviour
@@ -13,15 +14,27 @@ public class PlayerDash : MonoBehaviour
     [SerializeField] private float dashForce = 8f;
     [SerializeField] private float dashDuration = 0.5f;
     private bool isDashing = false;
-    private bool hasDashed = false; // Add this variable
+    private bool hasDashed = false; 
 
+    //Jump
     private bool canJump;
     public Transform _canJump;
     public LayerMask Ground;
     private bool doubleJump;
 
+    //Animation
     private enum MovementState { idle, running, jumping, falling }
     private MovementState state = MovementState.idle;
+
+    // Attack
+    bool attack = false;
+    private float timeBetweenAttack = 0.5f;
+    private float timeSinceAttack;
+    [SerializeField] Transform AttackTransform;
+    [SerializeField] Vector2 AttackArea;
+    [SerializeField] LayerMask attackablelayer;
+    [SerializeField] float damage;
+
 
     void Start()
     {
@@ -29,6 +42,7 @@ public class PlayerDash : MonoBehaviour
         anim = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
     }
+
 
     void Update()
     {
@@ -47,6 +61,32 @@ public class PlayerDash : MonoBehaviour
             anim.SetTrigger("dash");
             StartCoroutine(Dash());
         }
+        UpdateAttackTransform();
+    }
+
+    public void UpdateAttackTransform()
+    {
+
+        // L?y v? trí hi?n t?i c?a AttackTransform
+        Vector3 attackTransformPosition = AttackTransform.position;
+
+        // Xác ??nh h??ng m?t c?a nhân v?t
+        Vector3 characterDirection = sprite.flipX ? Vector3.left : Vector3.right;
+
+        // Tính toán v? trí m?i c?a AttackTransform
+        Vector3 newAttackTransformPosition = transform.position + characterDirection * 2f;
+
+        // Gán v? trí m?i cho AttackTransform, gi? nguyên tr?c y
+        AttackTransform.position = new Vector3(newAttackTransformPosition.x, attackTransformPosition.y, attackTransformPosition.z);
+
+        // Xác ??nh góc quay d?a trên h??ng c?a nhân v?t
+        float characterRotation = sprite.flipX ? 180f : 0f;
+
+        // Xác ??nh góc quay c?a AttackTransform
+        float attackRotation = sprite.flipX ? 180f : 0f;
+
+        // Gán góc quay cho AttackTransform
+        AttackTransform.rotation = Quaternion.Euler(0f, 0f, characterRotation + attackRotation);
     }
 
     IEnumerator Dash()
@@ -125,11 +165,40 @@ public class PlayerDash : MonoBehaviour
         anim.SetInteger("state", (int)state);
     }
 
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(AttackTransform.position, AttackArea);
+    }
     protected virtual void Attack()
     {
-        if (Input.GetMouseButtonDown(0))
+        attack = Input.GetMouseButtonDown(0);
+        timeSinceAttack += Time.deltaTime;
+
+        if (attack && timeSinceAttack >= timeBetweenAttack)
         {
+            timeSinceAttack = 0;
             anim.SetTrigger("attack");
+            Hit(AttackTransform, AttackArea);
+        }
+    }
+
+    private void Hit(Transform _attackTransform, Vector2 _attackArea)
+    {
+        Collider2D[] objectsToHit = Physics2D.OverlapBoxAll(_attackTransform.position, _attackArea, 0, attackablelayer);
+        if(objectsToHit.Length > 0)
+        {
+            Debug.Log("Hit");
+        }
+        for(int i =0; i < objectsToHit.Length; i++)
+        {
+            if (objectsToHit[i].GetComponent<Enemy>() != null)
+            {
+                objectsToHit[i].GetComponent<Enemy>().EnemyHit
+                    (damage, (transform.position - objectsToHit[i].transform.position).normalized,100);
+            }
+            
         }
     }
 }

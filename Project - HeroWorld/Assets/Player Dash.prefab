@@ -137,6 +137,7 @@ GameObject:
   - component: {fileID: 146955947400699647}
   - component: {fileID: 687045834643099919}
   - component: {fileID: 3510989386961743119}
+  - component: {fileID: 1126174347926588911}
   m_Layer: 0
   m_Name: Player Dash
   m_TagString: Untagged
@@ -320,3 +321,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df708c25c2c36a8469fb470e5e71fbba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1126174347926588911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7890632744287969374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56ad4eb5381315f41a500276b01b006b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  jumpForce: 8
+  dashForce: 8
+  dashDuration: 0.5
+  _canJump: {fileID: 0}
+  Ground:
+    serializedVersion: 2
+    m_Bits: 8

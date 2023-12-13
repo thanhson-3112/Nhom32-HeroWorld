@@ -56,5 +56,31 @@ PrefabInstance:
     - {fileID: 3798176391715594690, guid: 9e4e90188f5e91649860feb3c7a10987, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7890632744287969374, guid: 9e4e90188f5e91649860feb3c7a10987, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7441958461090530273}
   m_SourcePrefab: {fileID: 100100000, guid: 9e4e90188f5e91649860feb3c7a10987, type: 3}
+--- !u!1 &4894616160452998797 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7890632744287969374, guid: 9e4e90188f5e91649860feb3c7a10987, type: 3}
+  m_PrefabInstance: {fileID: 3345052865112987347}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7441958461090530273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4894616160452998797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 911ddc2d27036414a84e975c7d446884, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  jumpForce: 8
+  _canJump: {fileID: 0}
+  Ground:
+    serializedVersion: 2
+    m_Bits: 8
