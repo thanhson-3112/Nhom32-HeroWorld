@@ -66,29 +66,21 @@ public class PlayerDash : MonoBehaviour
 
     public void UpdateAttackTransform()
     {
-
-        // L?y v? trí hi?n t?i c?a AttackTransform
         Vector3 attackTransformPosition = AttackTransform.position;
 
-        // Xác ??nh h??ng m?t c?a nhân v?t
         Vector3 characterDirection = sprite.flipX ? Vector3.left : Vector3.right;
 
-        // Tính toán v? trí m?i c?a AttackTransform
         Vector3 newAttackTransformPosition = transform.position + characterDirection * 2f;
 
-        // Gán v? trí m?i cho AttackTransform, gi? nguyên tr?c y
         AttackTransform.position = new Vector3(newAttackTransformPosition.x, attackTransformPosition.y, attackTransformPosition.z);
 
-        // Xác ??nh góc quay d?a trên h??ng c?a nhân v?t
         float characterRotation = sprite.flipX ? 180f : 0f;
 
-        // Xác ??nh góc quay c?a AttackTransform
         float attackRotation = sprite.flipX ? 180f : 0f;
 
-        // Gán góc quay cho AttackTransform
         AttackTransform.rotation = Quaternion.Euler(0f, 0f, characterRotation + attackRotation);
     }
-
+    
     IEnumerator Dash()
     {
         isDashing = true;

@@ -7,10 +7,23 @@ public class PlayerLife : MonoBehaviour
 {
     private Rigidbody2D rb;
     private Animator anim;
+
+    [SerializeField] public int maxHeath = 10;
+    [SerializeField] public int heath;
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        heath = maxHeath;
+    }
+
+    public void TakeDamage(int damage)
+    {
+        heath -= damage;
+        if(heath <= 0)
+        {
+            Die();
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -20,6 +33,7 @@ public class PlayerLife : MonoBehaviour
             Die();
         }
     }
+
 
     private void Die()
     {
