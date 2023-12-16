@@ -15,6 +15,8 @@ public class Enemy : MonoBehaviour
     public int damage;
     public PlayerLife playerLife;
 
+    public PlayerDash playerDash;
+
     public virtual void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -53,6 +55,15 @@ public class Enemy : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
+            playerDash.KBCounter = playerDash.KBTotalTime;
+            if(collision.transform.position.x <= transform.position.x)
+            {
+                playerDash.KnockFromRight = true;
+            }
+            if (collision.transform.position.x > transform.position.x)
+            {
+                playerDash.KnockFromRight = false;
+            }
             playerLife.TakeDamage(damage);
         }
     }

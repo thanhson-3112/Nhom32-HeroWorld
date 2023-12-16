@@ -35,6 +35,13 @@ public class PlayerDash : MonoBehaviour
     [SerializeField] LayerMask attackablelayer;
     [SerializeField] float damage;
 
+    //KnockBack
+    public float KBForce;
+    public float KBCounter;
+    public float KBTotalTime;
+
+    public bool KnockFromRight; 
+
 
     void Start()
     {
@@ -64,6 +71,26 @@ public class PlayerDash : MonoBehaviour
         UpdateAttackTransform();
     }
 
+    public void FixedUpdate()
+    {
+        if(KBCounter <= 0)
+        {
+            rb.velocity = new Vector2(move * speed, rb.velocity.y);
+        }
+        else
+        {
+            if(KnockFromRight == true)
+            {
+                rb.velocity = new Vector2(-KBForce, KBForce);
+            }
+            if (KnockFromRight == false)
+            {
+                rb.velocity = new Vector2(KBForce, KBForce);
+            }
+            KBCounter -= Time.deltaTime;
+        }
+    }
+    // Thay doi AttackTransform theo huong nhan vat
     public void UpdateAttackTransform()
     {
         Vector3 attackTransformPosition = AttackTransform.position;
@@ -81,6 +108,8 @@ public class PlayerDash : MonoBehaviour
         AttackTransform.rotation = Quaternion.Euler(0f, 0f, characterRotation + attackRotation);
     }
     
+
+    // Di chuyen
     IEnumerator Dash()
     {
         isDashing = true;
@@ -157,7 +186,7 @@ public class PlayerDash : MonoBehaviour
         anim.SetInteger("state", (int)state);
     }
 
-
+    // Attack
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
