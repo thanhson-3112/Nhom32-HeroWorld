@@ -31,6 +31,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1168719606222353367}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5155364459505383897
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3190115244797873035}
+  m_Layer: 0
+  m_Name: Attack Transform
+  m_TagString: Untagged
+  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3190115244797873035
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5155364459505383897}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.4, y: -0.74, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1168719606222353367}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5620727080377780428
 GameObject:
   m_ObjectHideFlags: 0
@@ -138,9 +169,9 @@ GameObject:
   - component: {fileID: 687045834643099919}
   - component: {fileID: 3510989386961743119}
   - component: {fileID: 1126174347926588911}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player Dash
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -160,6 +191,7 @@ Transform:
   m_Children:
   - {fileID: 1279733826076077312}
   - {fileID: 6664574097398057885}
+  - {fileID: 3190115244797873035}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5677484896137537721
@@ -321,6 +353,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df708c25c2c36a8469fb470e5e71fbba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHeath: 10
+  heath: 0
 --- !u!114 &1126174347926588911
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -337,7 +371,17 @@ MonoBehaviour:
   jumpForce: 8
   dashForce: 8
   dashDuration: 0.5
-  _canJump: {fileID: 0}
+  _canJump: {fileID: 6664574097398057885}
   Ground:
     serializedVersion: 2
     m_Bits: 8
+  AttackTransform: {fileID: 3190115244797873035}
+  AttackArea: {x: 2.4, y: 1.49}
+  attackablelayer:
+    serializedVersion: 2
+    m_Bits: 64
+  damage: 2
+  KBForce: 6
+  KBCounter: 0
+  KBTotalTime: 0.2
+  KnockFromRight: 0

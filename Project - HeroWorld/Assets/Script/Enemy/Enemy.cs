@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Enemy : MonoBehaviour
 {   
     private Rigidbody2D rb;
+    private Animator anim;
+
 
     [SerializeField] protected float health;
     [SerializeField] protected float recollLength = 0.2f;
@@ -20,13 +23,15 @@ public class Enemy : MonoBehaviour
     public virtual void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>(); 
     }
 
     public virtual void Update()
     {
         if(health <= 0)
         {
-            Destroy(gameObject);
+            anim.SetTrigger("EnemyDeath");
+            Destroy(gameObject, 1.5f);
         }
         if (isRecolling)
         {

@@ -52,12 +52,14 @@ public class PlayerDash : MonoBehaviour
 
 
     void Update()
-    {
+    { 
+        
         if (!isDashing)
         {
             Move();
             Jump();
             UpdateAnimationState();
+            KnockBackCouter();
         }
 
         Attack();
@@ -69,17 +71,19 @@ public class PlayerDash : MonoBehaviour
             StartCoroutine(Dash());
         }
         UpdateAttackTransform();
+
+       
     }
 
-    public void FixedUpdate()
+    public virtual void KnockBackCouter()
     {
-        if(KBCounter <= 0)
+        if (KBCounter <= 0)
         {
             rb.velocity = new Vector2(move * speed, rb.velocity.y);
         }
         else
         {
-            if(KnockFromRight == true)
+            if (KnockFromRight == true)
             {
                 rb.velocity = new Vector2(-KBForce, KBForce);
             }
