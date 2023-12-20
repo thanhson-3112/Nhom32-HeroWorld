@@ -2,25 +2,52 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerLife : MonoBehaviour
 {
     private Rigidbody2D rb;
     private Animator anim;
 
-    [SerializeField] public int maxHeath = 10;
-    [SerializeField] public int heath;
+    [SerializeField] public int maxHealth = 5;
+    [SerializeField] public int health;
+
+    [SerializeField] public Image[] hearts;
+    public Sprite fullHeart;
+    public Sprite emptyHeart;
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        heath = maxHeath;
+        health = maxHealth;
     }
 
+    public void Update()
+    {
+        for(int i = 0; i < hearts.Length; i++)
+        {
+            if(i< health)
+            {
+                hearts[i].sprite = fullHeart;
+            }
+            else
+            {
+                hearts[i].sprite = emptyHeart;
+            }
+            if(i < maxHealth)
+            {
+                hearts[i].enabled = true;
+            }
+            else
+            {
+                hearts[i].enabled = false;
+            }
+        }
+    }
     public void TakeDamage(int damage)
     {
-        heath -= damage;
-        if(heath <= 0)
+        health -= damage;
+        if(health <= 0)
         {
             Die();
         }

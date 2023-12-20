@@ -10,7 +10,7 @@ public class PlayerDash : MonoBehaviour
 
     private float move;
     [SerializeField] private float speed = 5f;
-    [SerializeField] private float jumpForce = 8f;
+    [SerializeField] private float jumpForce = 12f;
     [SerializeField] private float dashForce = 8f;
     [SerializeField] private float dashDuration = 0.5f;
     private bool isDashing = false;
