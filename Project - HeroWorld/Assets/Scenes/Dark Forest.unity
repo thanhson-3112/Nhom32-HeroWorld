@@ -41152,10 +41152,6 @@ PrefabInstance:
       value: 7.9795723
       objectReference: {fileID: 0}
     - target: {fileID: 3510989386961743119, guid: 4be63275f835fd848bb8daf14e88cd51, type: 3}
-      propertyPath: maxHeath
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 3510989386961743119, guid: 4be63275f835fd848bb8daf14e88cd51, type: 3}
       propertyPath: fullHeart
       value: 
       objectReference: {fileID: 3309988946822472428, guid: d31a059e6360a3745abc6e9d5114bfa4, type: 3}
@@ -41163,10 +41159,6 @@ PrefabInstance:
       propertyPath: emptyHeart
       value: 
       objectReference: {fileID: -4082201736437149018, guid: d3ec052f3e1dff540a009096e20ce872, type: 3}
-    - target: {fileID: 3510989386961743119, guid: 4be63275f835fd848bb8daf14e88cd51, type: 3}
-      propertyPath: heart.Array.size
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 3510989386961743119, guid: 4be63275f835fd848bb8daf14e88cd51, type: 3}
       propertyPath: hearts.Array.size
       value: 6
@@ -41191,10 +41183,6 @@ PrefabInstance:
       propertyPath: 'hearts.Array.data[4]'
       value: 
       objectReference: {fileID: 1876746146}
-    - target: {fileID: 3510989386961743119, guid: 4be63275f835fd848bb8daf14e88cd51, type: 3}
-      propertyPath: 'hearts.Array.data[5]'
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 7890632744287969374, guid: 4be63275f835fd848bb8daf14e88cd51, type: 3}
       propertyPath: m_Name
       value: Player Dash

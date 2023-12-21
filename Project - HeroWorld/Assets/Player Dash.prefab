@@ -130,7 +130,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 8.130039
+  orthographic size: 7.9795723
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -307,7 +307,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 2
   m_Material: {fileID: 6200000, guid: 09877aeca6638c84693f8aa93bc659b2, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
@@ -353,8 +353,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df708c25c2c36a8469fb470e5e71fbba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHeath: 10
-  heath: 0
+  maxHealth: 5
+  health: 0
+  hearts:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  fullHeart: {fileID: 3309988946822472428, guid: d31a059e6360a3745abc6e9d5114bfa4, type: 3}
+  emptyHeart: {fileID: -4082201736437149018, guid: d3ec052f3e1dff540a009096e20ce872, type: 3}
 --- !u!114 &1126174347926588911
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -368,7 +377,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  jumpForce: 8
+  jumpForce: 12
   dashForce: 8
   dashDuration: 0.5
   _canJump: {fileID: 6664574097398057885}
