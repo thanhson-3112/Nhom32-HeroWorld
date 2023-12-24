@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Ground
   - Trap
+  - Blood
+  - Heart
   layers:
   - Default
   - TransparentFX

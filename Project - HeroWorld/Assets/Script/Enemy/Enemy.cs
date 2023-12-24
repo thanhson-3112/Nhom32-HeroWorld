@@ -9,17 +9,17 @@ public class Enemy : MonoBehaviour
     private Animator anim;
 
 
-    [SerializeField] protected float health;
+    [SerializeField] protected float health = 3f;
     [SerializeField] protected float recollLength = 0.2f;
-    [SerializeField] protected float recollFactor = 2f;
+    [SerializeField] protected float recollFactor = 3.5f;
     [SerializeField] protected bool isRecolling = false;
     protected float recollTimer;
 
-    public int damage;
+    public int damage = 1;
     public PlayerLife playerLife;
 
     public PlayerDash playerDash;
-
+    
     public virtual void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -31,7 +31,7 @@ public class Enemy : MonoBehaviour
         if(health <= 0)
         {
             anim.SetTrigger("EnemyDeath");
-            Destroy(gameObject, 1.5f);
+            Destroy(gameObject, 1.25f);
         }
         if (isRecolling)
         {
@@ -70,6 +70,11 @@ public class Enemy : MonoBehaviour
                 playerDash.KnockFromRight = false;
             }
             playerLife.TakeDamage(damage);
+        }
+        if(collision.gameObject.tag == "Trap")
+        {
+            anim.SetTrigger("EnemyDeath");
+            Destroy(gameObject, 1f);
         }
     }
 }

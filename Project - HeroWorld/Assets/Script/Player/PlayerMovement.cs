@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -9,18 +8,21 @@ public class PlayerMovement : MonoBehaviour
     private Animator anim;
     private SpriteRenderer sprite;
 
-    //di chuyen trai phai
     private float move;
     [SerializeField] private float speed = 5f;
-    [SerializeField] private float jumpForce = 7f;
+    [SerializeField] private float jumpForce = 12f;
+    [SerializeField] private float dashForce = 8f;
+    [SerializeField] private float dashDuration = 0.5f;
+    private bool isDashing = false;
+    private bool hasDashed = false;
 
-    // Xet dk nhay
+    //Jump
     private bool canJump;
     public Transform _canJump;
     public LayerMask Ground;
     private bool doubleJump;
 
-    // Animation 
+    //Animation
     private enum MovementState { idle, running, jumping, falling }
     private MovementState state = MovementState.idle;
 
@@ -40,21 +42,23 @@ public class PlayerMovement : MonoBehaviour
 
     public bool KnockFromRight;
 
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
-
     }
+
 
     void Update()
     {
+        
         Move();
         Jump();
         UpdateAnimationState();
         KnockBackCouter();
-
+        
         Attack();
         UpdateAttackTransform();
 
@@ -100,13 +104,10 @@ public class PlayerMovement : MonoBehaviour
 
 
     // Di chuyen
-    
-
     protected virtual void Move()
     {
         move = Input.GetAxisRaw("Horizontal");
         rb.velocity = new Vector2(move * speed, rb.velocity.y);
-
     }
 
     protected virtual void Jump()
