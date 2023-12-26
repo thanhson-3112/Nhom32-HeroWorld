@@ -24,6 +24,7 @@ public class PlayerLife : MonoBehaviour
 
     public void Update()
     {
+        // Dieu chinh thanh mau
         for(int i = 0; i < hearts.Length; i++)
         {
             if(i< health)
@@ -61,12 +62,31 @@ public class PlayerLife : MonoBehaviour
         }
     }
 
-
     private void Die()
     {
         rb.bodyType = RigidbodyType2D.Static;
         anim.SetTrigger("death");
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.CompareTag("Blood"))
+        {
+            if(health != maxHealth)
+            {
+                Destroy(collision.gameObject);
+                health++;
+            }
+        }
+
+        if (collision.gameObject.CompareTag("Heart"))
+        {
+            Destroy(collision.gameObject);
+            maxHealth++;
+            health = maxHealth;
+        }
+    }
+    
 
     private void RestartLevel()
     {
