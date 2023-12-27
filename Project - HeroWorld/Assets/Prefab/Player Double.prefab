@@ -378,8 +378,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   jumpForce: 12
-  dashForce: 8
-  dashDuration: 0.5
   _canJump: {fileID: 6664574097398057885}
   Ground:
     serializedVersion: 2
