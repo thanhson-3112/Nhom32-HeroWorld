@@ -1,26 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class PlayerDoubleJump : MonoBehaviour
+public class PlayerDoubleJUmp : MonoBehaviour
 {
     private Rigidbody2D rb;
     private Animator anim;
     private SpriteRenderer sprite;
 
-    //di chuyen trai phai
     private float move;
     [SerializeField] private float speed = 5f;
-    [SerializeField] private float jumpForce = 8f;
+    [SerializeField] private float jumpForce = 12f;
+    [SerializeField] private float dashForce = 8f;
+    [SerializeField] private float dashDuration = 0.5f;
+    private bool isDashing = false;
+    private bool hasDashed = false;
 
-    // Xet dk nhay
+    //Jump
     private bool canJump;
     public Transform _canJump;
     public LayerMask Ground;
     private bool doubleJump;
 
-    // Animation 
+    //Animation
     private enum MovementState { idle, running, jumping, falling }
     private MovementState state = MovementState.idle;
 
@@ -28,28 +30,84 @@ public class PlayerDoubleJump : MonoBehaviour
     bool attack = false;
     private float timeBetweenAttack = 0.5f;
     private float timeSinceAttack;
+    [SerializeField] Transform AttackTransform;
+    [SerializeField] Vector2 AttackArea;
+    [SerializeField] LayerMask attackablelayer;
+    [SerializeField] float damage;
+
+    //KnockBack
+    public float KBForce;
+    public float KBCounter;
+    public float KBTotalTime;
+
+    public bool KnockFromRight;
+
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
-
     }
 
-    // Update is called once per frame
+
     void Update()
     {
+
         Move();
         Jump();
         UpdateAnimationState();
+        KnockBackCouter();
+
         Attack();
+        UpdateAttackTransform();
+
+
     }
 
+    public virtual void KnockBackCouter()
+    {
+        if (KBCounter <= 0)
+        {
+            rb.velocity = new Vector2(move * speed, rb.velocity.y);
+        }
+        else
+        {
+            if (KnockFromRight == true)
+            {
+                rb.velocity = new Vector2(-KBForce, KBForce);
+            }
+            if (KnockFromRight == false)
+            {
+                rb.velocity = new Vector2(KBForce, KBForce);
+            }
+            KBCounter -= Time.deltaTime;
+        }
+    }
+    // Thay doi AttackTransform theo huong nhan vat
+    public void UpdateAttackTransform()
+    {
+        Vector3 attackTransformPosition = AttackTransform.position;
+
+        Vector3 characterDirection = sprite.flipX ? Vector3.left : Vector3.right;
+
+        Vector3 newAttackTransformPosition = transform.position + characterDirection * 2f;
+
+        AttackTransform.position = new Vector3(newAttackTransformPosition.x, attackTransformPosition.y, attackTransformPosition.z);
+
+        float characterRotation = sprite.flipX ? 180f : 0f;
+
+        float attackRotation = sprite.flipX ? 180f : 0f;
+
+        AttackTransform.rotation = Quaternion.Euler(0f, 0f, characterRotation + attackRotation);
+    }
+
+
+    // Di chuyen
     protected virtual void Move()
     {
         move = Input.GetAxisRaw("Horizontal");
         rb.velocity = new Vector2(move * speed, rb.velocity.y);
-
     }
 
     protected virtual void Jump()
@@ -68,7 +126,6 @@ public class PlayerDoubleJump : MonoBehaviour
                 rb.velocity = new Vector2(rb.velocity.x, jumpForce);
                 doubleJump = !doubleJump;
             }
-
         }
     }
 
@@ -102,6 +159,12 @@ public class PlayerDoubleJump : MonoBehaviour
         anim.SetInteger("state", (int)state);
     }
 
+    // Attack
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(AttackTransform.position, AttackArea);
+    }
     protected virtual void Attack()
     {
         attack = Input.GetMouseButtonDown(0);
@@ -111,6 +174,25 @@ public class PlayerDoubleJump : MonoBehaviour
         {
             timeSinceAttack = 0;
             anim.SetTrigger("attack");
+            Hit(AttackTransform, AttackArea);
+        }
+    }
+
+    private void Hit(Transform _attackTransform, Vector2 _attackArea)
+    {
+        Collider2D[] objectsToHit = Physics2D.OverlapBoxAll(_attackTransform.position, _attackArea, 0, attackablelayer);
+        if (objectsToHit.Length > 0)
+        {
+            Debug.Log("Hit");
+        }
+        for (int i = 0; i < objectsToHit.Length; i++)
+        {
+            if (objectsToHit[i].GetComponent<Enemy>() != null)
+            {
+                objectsToHit[i].GetComponent<Enemy>().EnemyHit
+                    (damage, (transform.position - objectsToHit[i].transform.position).normalized, 100);
+            }
+
         }
     }
 }

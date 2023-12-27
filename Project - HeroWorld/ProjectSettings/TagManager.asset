@@ -4,9 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Ground
   - Trap
   - Blood
+  - Ground
   - Heart
   layers:
   - Default
@@ -15,7 +15,7 @@ TagManager:
   - Ground
   - Water
   - UI
-  - AttackAble
+  - Attackable
   - 
   - 
   - 
