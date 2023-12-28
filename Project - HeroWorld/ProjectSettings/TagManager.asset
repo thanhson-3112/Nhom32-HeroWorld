@@ -8,6 +8,8 @@ TagManager:
   - Blood
   - Ground
   - Heart
+  - CheckPoint
+  - StartPoint
   layers:
   - Default
   - TransparentFX

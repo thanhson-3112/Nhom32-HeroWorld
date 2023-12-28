@@ -15,11 +15,16 @@ public class PlayerLife : MonoBehaviour
     [SerializeField] public Image[] hearts;
     public Sprite fullHeart;
     public Sprite emptyHeart;
+
+    //CHeckPoint
+    private Vector2 respawnPoint;
+    public GameObject startPoint;
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         health = maxHealth;
+        respawnPoint = startPoint.transform.position;
     }
 
     public void Update()
@@ -66,6 +71,15 @@ public class PlayerLife : MonoBehaviour
     {
         rb.bodyType = RigidbodyType2D.Static;
         anim.SetTrigger("death");
+
+        Invoke("Respawn", 1.75f); 
+    }
+
+    private void Respawn()
+    {
+        rb.bodyType = RigidbodyType2D.Dynamic;
+        transform.position = respawnPoint;
+        health = maxHealth;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -85,11 +99,22 @@ public class PlayerLife : MonoBehaviour
             maxHealth++;
             health = maxHealth;
         }
+
+
+
+        if (collision.CompareTag("CheckPoint"))
+        {
+            respawnPoint = collision.transform.position;
+            Debug.Log("Checkpoint reached. Respawn point updated to: " + respawnPoint);
+        }
     }
     
 
     private void RestartLevel()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        transform.position = respawnPoint;
+        health = maxHealth;
     }
+
+
 }

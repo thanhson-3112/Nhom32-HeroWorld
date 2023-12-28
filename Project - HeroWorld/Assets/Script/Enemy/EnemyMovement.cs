@@ -22,16 +22,23 @@ public class EnemyMovement : MonoBehaviour
     {
         if (isChasing)
         {
-            
-            if(transform.position.x > playerTransform.position.x)
+
+            if (Vector2.Distance(transform.position, playerTransform.position) > chaseDistance)
             {
-                transform.localScale = new Vector3(-6, 6, 6);
-                transform.position += Vector3.left * moveSpeed * Time.deltaTime;
+                isChasing = false;
             }
-            if (transform.position.x < playerTransform.position.x)
+            else
             {
-                transform.localScale = new Vector3(6, 6, 6);
-                transform.position += Vector3.right * moveSpeed * Time.deltaTime;
+                if (transform.position.x > playerTransform.position.x)
+                {
+                    transform.localScale = new Vector3(-6, 6, 6);
+                    transform.position += Vector3.left * moveSpeed * Time.deltaTime;
+                }
+                if (transform.position.x < playerTransform.position.x)
+                {
+                    transform.localScale = new Vector3(6, 6, 6);
+                    transform.position += Vector3.right * moveSpeed * Time.deltaTime;
+                }
             }
         }
 

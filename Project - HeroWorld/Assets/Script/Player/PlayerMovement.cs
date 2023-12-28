@@ -39,8 +39,9 @@ public class PlayerMovement : MonoBehaviour
     public float KBForce;
     public float KBCounter;
     public float KBTotalTime;
-
     public bool KnockFromRight;
+
+    
 
 
     void Start()
@@ -48,6 +49,7 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
+        
     }
 
 
@@ -187,4 +189,8 @@ public class PlayerMovement : MonoBehaviour
 
         }
     }
+
+   
+
+
 }
