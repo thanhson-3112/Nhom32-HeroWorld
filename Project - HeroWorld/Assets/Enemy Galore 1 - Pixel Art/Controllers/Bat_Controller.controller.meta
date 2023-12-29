@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 3736a35d1a827544dbefbeec5a22c4a5
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 208921
+  packageName: Enemy Galore 1 - Pixel Art
+  packageVersion: 1.2
+  assetPath: Assets/Enemy Galore 1 - Pixel Art/Controllers/Bat_Controller.controller
+  uploadId: 503193

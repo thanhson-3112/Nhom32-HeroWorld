@@ -92,6 +92,10 @@ public class PlayerDash : MonoBehaviour
                 rb.velocity = new Vector2(KBForce, KBForce);
             }
             KBCounter -= Time.deltaTime;
+            if (KBCounter <= 0)
+            {
+                KBCounter = 0;
+            }
         }
     }
     // Thay doi AttackTransform theo huong nhan vat
@@ -117,7 +121,7 @@ public class PlayerDash : MonoBehaviour
     IEnumerator Dash()
     {
         isDashing = true;
-        hasDashed = true; // Set to true when dashing
+        hasDashed = true; 
         
         Vector2 originalVelocity = rb.velocity;
         

@@ -11,17 +11,12 @@ public class PlayerMovement : MonoBehaviour
     private float move;
     [SerializeField] private float speed = 5f;
     [SerializeField] private float jumpForce = 12f;
-    [SerializeField] private float dashForce = 8f;
-    [SerializeField] private float dashDuration = 0.5f;
-    private bool isDashing = false;
-    private bool hasDashed = false;
-
+    
     //Jump
     private bool canJump;
     public Transform _canJump;
     public LayerMask Ground;
-    private bool doubleJump;
-
+    
     //Animation
     private enum MovementState { idle, running, jumping, falling }
     private MovementState state = MovementState.idle;
