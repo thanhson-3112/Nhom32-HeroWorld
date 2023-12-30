@@ -3711,11 +3711,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1168719606222353367, guid: d1ae8dfaf41497c43bdd51d03fb9f764, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 150.91
+      value: 187.34
       objectReference: {fileID: 0}
     - target: {fileID: 1168719606222353367, guid: d1ae8dfaf41497c43bdd51d03fb9f764, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 29.69
+      value: 30.92
       objectReference: {fileID: 0}
     - target: {fileID: 1168719606222353367, guid: d1ae8dfaf41497c43bdd51d03fb9f764, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3788,6 +3788,10 @@ PrefabInstance:
     - target: {fileID: 7890632744287969374, guid: d1ae8dfaf41497c43bdd51d03fb9f764, type: 3}
       propertyPath: m_Name
       value: Player Normal
+      objectReference: {fileID: 0}
+    - target: {fileID: 7890632744287969374, guid: d1ae8dfaf41497c43bdd51d03fb9f764, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4108,7 +4112,7 @@ Transform:
   m_GameObject: {fileID: 979576967}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 14.27, y: -3.46, z: 0.05387613}
+  m_LocalPosition: {x: 36.68, y: -2.15, z: 0.05387613}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5300,7 +5304,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1482070412}
   m_Layer: 0
-  m_Name: Slime (4)
+  m_Name: Boss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5315,7 +5319,7 @@ Transform:
   m_GameObject: {fileID: 1482070411}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 43.7, y: 28.7, z: -0.01865068}
+  m_LocalPosition: {x: 70.69861, y: 28.762463, z: -0.01865068}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5398,12 +5402,12 @@ GameObject:
   - component: {fileID: 1608132749}
   - component: {fileID: 1608132748}
   - component: {fileID: 1608132747}
-  - component: {fileID: 1608132746}
-  - component: {fileID: 1608132745}
   - component: {fileID: 1608132744}
-  - component: {fileID: 1608132743}
+  - component: {fileID: 1608132751}
+  - component: {fileID: 1608132750}
+  - component: {fileID: 1608132752}
   m_Layer: 6
-  m_Name: Enemy
+  m_Name: Boss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5418,31 +5422,12 @@ Transform:
   m_GameObject: {fileID: 1608132741}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 13.06, y: -3.28, z: 0.23410521}
-  m_LocalScale: {x: -6, y: 6, z: 6}
+  m_LocalPosition: {x: 33.02, y: -2.41, z: 0.23410521}
+  m_LocalScale: {x: -9, y: 9, z: 9}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1482070412}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1608132743
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1608132741}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7d3ba01491de694bb2883602918b91a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 3
-  recollLength: 0.2
-  recollFactor: 3.5
-  isRecolling: 0
-  damage: 1
-  playerLife: {fileID: 0}
-  playerDash: {fileID: 0}
 --- !u!95 &1608132744
 Animator:
   serializedVersion: 7
@@ -5453,7 +5438,7 @@ Animator:
   m_GameObject: {fileID: 1608132741}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a3d0325cc87534a46a012304fd3f18f5, type: 2}
+  m_Controller: {fileID: 9100000, guid: 3609ea078dcbf444a8ab0bc6de1863b6, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -5465,45 +5450,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1608132745
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1608132741}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9915a9311b408694ca9c153ebd0a286d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 3
-  recollLength: 0.2
-  recollFactor: 3.5
-  isRecolling: 0
-  damage: 1
-  playerLife: {fileID: 876422307}
-  playerNormal: {fileID: 876422306}
---- !u!114 &1608132746
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1608132741}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0bd4271b993e79e48b11d9cdc39c84b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movePoint:
-  - {fileID: 2141398897}
-  - {fileID: 979576968}
-  moveSpeed: 2
-  moveDestination: 1
-  playerTransform: {fileID: 876422308}
-  isChasing: 0
-  chaseDistance: 5
 --- !u!50 &1608132747
 Rigidbody2D:
   serializedVersion: 4
@@ -5565,17 +5511,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.016273022, y: -0.08983343}
+  m_Offset: {x: -0.012991428, y: -0.057023227}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.64, y: 0.64}
+    oldSize: {x: 1.5, y: 1.5}
     newSize: {x: 0.64, y: 0.64}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.20594382, y: 0.15293218}
+  m_Size: {x: 0.25187683, y: 0.38916844}
   m_EdgeRadius: 0
 --- !u!212 &1608132749
 SpriteRenderer:
@@ -5618,7 +5564,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1576031485842391493, guid: 0a210a6ac82f1214a89ccd8911af22c7, type: 3}
+  m_Sprite: {fileID: 4944230376442633554, guid: c6ac0078f39473048b9f54d791095f35, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -5629,6 +5575,64 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1608132750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1608132741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21cbb575697442043a06e39dd78de65f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movePoint:
+  - {fileID: 2141398897}
+  - {fileID: 979576968}
+  moveSpeed: 4
+  moveDestination: 1
+  playerTransform: {fileID: 876422308}
+  isChasing: 0
+  chaseDistance: 10
+--- !u!114 &1608132751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1608132741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad31f910bac149c498c71b824ca976f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 10
+  recollLength: 0.2
+  recollFactor: 3.5
+  isRecolling: 0
+  damage: 1
+  playerLife: {fileID: 876422307}
+  playerNormal: {fileID: 876422306}
+--- !u!114 &1608132752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1608132741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7d3ba01491de694bb2883602918b91a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 3
+  recollLength: 0.2
+  recollFactor: 3.5
+  isRecolling: 0
+  damage: 1
+  playerLife: {fileID: 0}
+  playerDash: {fileID: 0}
 --- !u!4 &1648130216 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4567377114488187788, guid: 00200fed8336deb45ad827a5ede73b3f, type: 3}
@@ -41050,7 +41054,7 @@ Transform:
   m_GameObject: {fileID: 2141398896}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.4, y: -3.46, z: 0.05387613}
+  m_LocalPosition: {x: -5.72, y: -2.15, z: 0.05387613}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -41178,10 +41182,10 @@ SceneRoots:
   - {fileID: 820839067}
   - {fileID: 1863030042}
   - {fileID: 1074527446}
-  - {fileID: 405979170}
   - {fileID: 879869285}
   - {fileID: 641197719}
   - {fileID: 767785930}
   - {fileID: 852651713}
   - {fileID: 2000173561}
+  - {fileID: 405979170}
   - {fileID: 876422305}

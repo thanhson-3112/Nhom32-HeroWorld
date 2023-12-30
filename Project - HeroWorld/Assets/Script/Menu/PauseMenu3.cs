@@ -14,6 +14,8 @@ public class PauseMenu3 : MonoBehaviour
     void Start()
     {
         pauseMenu.SetActive(false);
+        Time.timeScale = 1f;
+
     }
 
     void Update()
