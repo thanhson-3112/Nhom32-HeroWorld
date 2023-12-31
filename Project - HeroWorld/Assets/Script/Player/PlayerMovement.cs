@@ -176,9 +176,18 @@ public class PlayerMovement : MonoBehaviour
         }
         for (int i = 0; i < objectsToHit.Length; i++)
         {
-            if (objectsToHit[i].GetComponent<Enemy>() != null)
+            if (objectsToHit[i].GetComponent<Enemy1>() != null)
             {
-                objectsToHit[i].GetComponent<Enemy>().EnemyHit
+                objectsToHit[i].GetComponent<Enemy1>().EnemyHit
+                    (damage, (transform.position - objectsToHit[i].transform.position).normalized, 100);
+            }
+
+        }
+        for (int i = 0; i < objectsToHit.Length; i++)
+        {
+            if (objectsToHit[i].GetComponent<Boss1>() != null)
+            {
+                objectsToHit[i].GetComponent<Boss1>().EnemyHit
                     (damage, (transform.position - objectsToHit[i].transform.position).normalized, 100);
             }
 
