@@ -5,6 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - Trap
+<<<<<<< HEAD
+=======
+  - Blood
+  - Ground
+  - Heart
+>>>>>>> a71f3943bd18a65a8bfc0dd5ecbad4011f8e3ecf
   layers:
   - Default
   - TransparentFX
@@ -12,7 +18,7 @@ TagManager:
   - Ground
   - Water
   - UI
-  - 
+  - Attackable
   - 
   - 
   - 
