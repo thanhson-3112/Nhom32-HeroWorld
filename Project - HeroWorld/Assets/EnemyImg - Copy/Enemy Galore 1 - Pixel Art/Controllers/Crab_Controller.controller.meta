@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 4bba5124320b9ec47bd652e0d483a629
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 208921
+  packageName: Enemy Galore 1 - Pixel Art
+  packageVersion: 1.2
+  assetPath: Assets/Enemy Galore 1 - Pixel Art/Controllers/Crab_Controller.controller
+  uploadId: 503193

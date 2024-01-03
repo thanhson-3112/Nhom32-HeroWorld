@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 55c08f6ed8c8be541a7a3d83356a3a8b
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 208921
+  packageName: Enemy Galore 1 - Pixel Art
+  packageVersion: 1.2
+  assetPath: Assets/Enemy Galore 1 - Pixel Art/Animations/Golem_Hit_A.anim
+  uploadId: 503193
