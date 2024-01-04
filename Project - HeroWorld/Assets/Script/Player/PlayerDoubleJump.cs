@@ -183,9 +183,15 @@ public class PlayerDoubleJump : MonoBehaviour
         }
         for (int i = 0; i < objectsToHit.Length; i++)
         {
-            if (objectsToHit[i].GetComponent<Enemy>() != null)
+            if (objectsToHit[i].GetComponent<Enemy2>() != null)
             {
-                objectsToHit[i].GetComponent<Enemy>().EnemyHit
+                objectsToHit[i].GetComponent<Enemy2>().EnemyHit
+                    (damage, (transform.position - objectsToHit[i].transform.position).normalized, 100);
+            }
+
+            if (objectsToHit[i].GetComponent<Boss2>() != null)
+            {
+                objectsToHit[i].GetComponent<Boss2>().EnemyHit
                     (damage, (transform.position - objectsToHit[i].transform.position).normalized, 100);
             }
 
