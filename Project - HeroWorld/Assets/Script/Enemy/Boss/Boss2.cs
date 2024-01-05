@@ -9,7 +9,7 @@ public class Boss2 : MonoBehaviour
     private Animator anim;
 
 
-    [SerializeField] protected float health = 20f;
+    [SerializeField] protected float health = 15f;
     [SerializeField] protected float recollLength = 0.2f;
     [SerializeField] protected float recollFactor = 3.5f;
     [SerializeField] protected bool isRecolling = false;
@@ -65,14 +65,14 @@ public class Boss2 : MonoBehaviour
         float distanceToPlayer = Vector2.Distance(transform.position, playerTransform.position);
         if (distanceToPlayer <= activationDistance && !isAttacking)
         {
-            anim.SetTrigger("FlyingEyeAttack");
+            anim.SetTrigger("GoblinAttack");
             isAttacking = true;
-            anim.SetTrigger("FlyingEyeRun");
+            anim.SetTrigger("GoblinRun");
         }
         else
         {
             isAttacking = false;
-            anim.SetTrigger("FlyingEyeRun");
+            anim.SetTrigger("GoblinRun");
         }
 
     }
@@ -81,8 +81,8 @@ public class Boss2 : MonoBehaviour
     public virtual void EnemyHit(float _damageDone, Vector2 _hitDirection, float _hitForce)
     {
         health -= _damageDone;
-        anim.SetTrigger("FlyingEyeTakeHit");
-        anim.SetTrigger("FlyingEyeRun");
+        anim.SetTrigger("GoblinTakeHit");
+        anim.SetTrigger("GoblinRun");
         if (!isRecolling)
         {
             rb.AddForce(-_hitForce * recollFactor * _hitDirection);
