@@ -252,7 +252,7 @@ GameObject:
   - component: {fileID: 119811474}
   - component: {fileID: 119811473}
   m_Layer: 0
-  m_Name: pngtree-cartoon-landscape-game-background-picture-image_2511461
+  m_Name: Backgound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

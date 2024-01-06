@@ -232,6 +232,11 @@ public class PlayerDash : MonoBehaviour
                 objectsToHit[i].GetComponent<Boss3>().EnemyHit
                     (damage, (transform.position - objectsToHit[i].transform.position).normalized, 100);
             }
+            if (objectsToHit[i].GetComponent<Boss4>() != null)
+            {
+                objectsToHit[i].GetComponent<Boss4>().EnemyHit
+                    (damage, (transform.position - objectsToHit[i].transform.position).normalized, 100);
+            }
 
         }
     }

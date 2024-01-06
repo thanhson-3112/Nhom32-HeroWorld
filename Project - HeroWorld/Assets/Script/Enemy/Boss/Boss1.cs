@@ -9,7 +9,7 @@ public class Boss1 : MonoBehaviour
     private Animator anim;
 
 
-    [SerializeField] protected float health = 19f;
+    [SerializeField] protected float health = 10f;
     [SerializeField] protected float recollLength = 0.2f;
     [SerializeField] protected float recollFactor = 3.5f;
     [SerializeField] protected bool isRecolling = false;
@@ -20,7 +20,7 @@ public class Boss1 : MonoBehaviour
 
     public PlayerMovement playerNormal;
 
-    public float activationDistance = 3f; 
+    public float activationDistance = 4f; 
     private Transform playerTransform;
     private bool isAttacking = false;
 

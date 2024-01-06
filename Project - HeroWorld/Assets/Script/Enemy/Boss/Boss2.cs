@@ -20,7 +20,7 @@ public class Boss2 : MonoBehaviour
 
     public PlayerDoubleJump playerDoubleJump;
 
-    public float activationDistance = 3f;
+    public float activationDistance = 4f;
     private Transform playerTransform;
     private bool isAttacking = false;
 
