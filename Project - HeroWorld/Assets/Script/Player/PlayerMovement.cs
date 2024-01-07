@@ -36,7 +36,11 @@ public class PlayerMovement : MonoBehaviour
     public float KBTotalTime;
     public bool KnockFromRight;
 
-    
+    //Sound
+    [SerializeField] private AudioSource RunSoundEffect;
+    [SerializeField] private AudioSource JumpSoundEffect;
+    [SerializeField] private AudioSource AttackSoundEffect;
+    [SerializeField] private AudioSource HitSoundEffect;
 
 
     void Start()
@@ -104,7 +108,21 @@ public class PlayerMovement : MonoBehaviour
     protected virtual void Move()
     {
         move = Input.GetAxisRaw("Horizontal");
-        rb.velocity = new Vector2(move * speed, rb.velocity.y);
+        if (canJump)
+        {
+            if (move != 0f && !RunSoundEffect.isPlaying)
+            {
+                RunSoundEffect.Play();
+            }
+            else if (move == 0f)
+            {
+                RunSoundEffect.Stop();
+            }
+        }
+        else
+        {
+            RunSoundEffect.Stop();
+        }
     }
 
     protected virtual void Jump()
@@ -113,6 +131,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (canJump && Input.GetKey(KeyCode.Space))
         {
+            JumpSoundEffect.Play();
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
 
@@ -162,6 +181,7 @@ public class PlayerMovement : MonoBehaviour
         if (attack && timeSinceAttack >= timeBetweenAttack)
         {
             timeSinceAttack = 0;
+            AttackSoundEffect.Play();
             anim.SetTrigger("attack");
             Hit(AttackTransform, AttackArea);
         }
@@ -172,6 +192,7 @@ public class PlayerMovement : MonoBehaviour
         Collider2D[] objectsToHit = Physics2D.OverlapBoxAll(_attackTransform.position, _attackArea, 0, attackablelayer);
         if (objectsToHit.Length > 0)
         {
+            HitSoundEffect.Play();
             Debug.Log("Hit");
         }
         for (int i = 0; i < objectsToHit.Length; i++)

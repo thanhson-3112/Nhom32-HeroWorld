@@ -39,8 +39,18 @@ public class PlayerDash : MonoBehaviour
     public float KBForce;
     public float KBCounter;
     public float KBTotalTime;
+    public bool KnockFromRight;
 
-    public bool KnockFromRight; 
+    //Sound
+    [SerializeField] private AudioSource RunSoundEffect;
+    [SerializeField] private AudioSource JumpSoundEffect;
+    [SerializeField] private AudioSource AttackSoundEffect;
+    [SerializeField] private AudioSource DashSoundEffect;
+    [SerializeField] private AudioSource HitSoundEffect;
+
+
+
+
 
 
     void Start()
@@ -67,6 +77,7 @@ public class PlayerDash : MonoBehaviour
         // Dash input detection
         if (Input.GetMouseButtonDown(1) && !isDashing && !hasDashed)
         {
+            DashSoundEffect.Play();
             anim.SetTrigger("dash");
             StartCoroutine(Dash());
         }
@@ -136,8 +147,22 @@ public class PlayerDash : MonoBehaviour
     protected virtual void Move()
     {
         move = Input.GetAxisRaw("Horizontal");
+        if (canJump)
+    {
+            if (move != 0f && !RunSoundEffect.isPlaying)
+            {
+                RunSoundEffect.Play();
+            }
+            else if (move == 0f)
+            {
+                RunSoundEffect.Stop();
+            }
+       }
+       else
+       {
+            RunSoundEffect.Stop();
+        }
         rb.velocity = new Vector2(move * speed, rb.velocity.y);
-
         // Reset hasDashed when grounded
         if (canJump)
         {
@@ -158,6 +183,7 @@ public class PlayerDash : MonoBehaviour
         {
             if (canJump || (doubleJump && !hasDashed))
             {
+                JumpSoundEffect.Play();
                 rb.velocity = new Vector2(rb.velocity.x, jumpForce);
                 doubleJump = !doubleJump;
             }
@@ -172,6 +198,7 @@ public class PlayerDash : MonoBehaviour
         {
             state = MovementState.running;
             sprite.flipX = false;
+        
         }
         else if (move < 0f)
         {
@@ -190,6 +217,7 @@ public class PlayerDash : MonoBehaviour
         else if (rb.velocity.y < -.1f)
         {
             state = MovementState.falling;
+            
         }
         anim.SetInteger("state", (int)state);
     }
@@ -208,6 +236,7 @@ public class PlayerDash : MonoBehaviour
         if (attack && timeSinceAttack >= timeBetweenAttack)
         {
             timeSinceAttack = 0;
+            AttackSoundEffect.Play();
             anim.SetTrigger("attack");
             Hit(AttackTransform, AttackArea);
         }
@@ -218,6 +247,7 @@ public class PlayerDash : MonoBehaviour
         Collider2D[] objectsToHit = Physics2D.OverlapBoxAll(_attackTransform.position, _attackArea, 0, attackablelayer);
         if(objectsToHit.Length > 0)
         {
+            HitSoundEffect.Play();
             Debug.Log("Hit");
         }
         for(int i =0; i < objectsToHit.Length; i++)

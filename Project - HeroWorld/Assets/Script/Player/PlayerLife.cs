@@ -19,6 +19,10 @@ public class PlayerLife : MonoBehaviour
     //CHeckPoint
     private Vector2 respawnPoint;
     public GameObject startPoint;
+
+    //Sound
+    [SerializeField] private AudioSource DamageSoundEffect;
+    [SerializeField] private AudioSource DeathSoundEffect;
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -53,7 +57,8 @@ public class PlayerLife : MonoBehaviour
     public void TakeDamage(int damage)
     {
         health -= damage;
-        if(health <= 0)
+        DamageSoundEffect.Play();
+        if (health <= 0)
         {
             Die();
         }
@@ -69,10 +74,15 @@ public class PlayerLife : MonoBehaviour
 
     private void Die()
     {
+        if (DeathSoundEffect != null)
+        {
+            DeathSoundEffect.Play();
+        }
+
         rb.bodyType = RigidbodyType2D.Static;
         anim.SetTrigger("death");
 
-        Invoke("Respawn", 1.75f); 
+        Invoke("Respawn", 1.7f); 
     }
 
     private void Respawn()

@@ -25,6 +25,8 @@ public class Boss4 : MonoBehaviour
     private bool isAttacking = false;
 
     public GameObject finishLevelObject;
+
+    /*[SerializeField] private AudioSource BossAudioEffect;*/
     public virtual void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -44,6 +46,7 @@ public class Boss4 : MonoBehaviour
         }
         else
         {
+            
             HideNextMap();
         }
 
