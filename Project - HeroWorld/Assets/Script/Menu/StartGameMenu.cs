@@ -12,7 +12,7 @@ public class StartGameMenu : MonoBehaviour
 
     public void Setting()
     {
-
+        
     }
 
     public void ExitGame()

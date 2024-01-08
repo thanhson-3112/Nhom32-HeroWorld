@@ -129,7 +129,7 @@ public class PlayerMovement : MonoBehaviour
     {
         canJump = Physics2D.OverlapCircle(_canJump.position, 0.2f, Ground);
 
-        if (canJump && Input.GetKey(KeyCode.Space))
+        if ((canJump && (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.W))))
         {
             JumpSoundEffect.Play();
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);

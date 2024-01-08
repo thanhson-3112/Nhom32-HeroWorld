@@ -174,12 +174,12 @@ public class PlayerDash : MonoBehaviour
     {
         canJump = Physics2D.OverlapCircle(_canJump.position, 0.2f, Ground);
 
-        if (canJump && !Input.GetKey(KeyCode.Space))
+        if ((canJump && !(Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.W))))
         {
             doubleJump = false;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W))
         {
             if (canJump || (doubleJump && !hasDashed))
             {
