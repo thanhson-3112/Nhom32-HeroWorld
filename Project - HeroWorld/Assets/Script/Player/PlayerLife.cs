@@ -23,6 +23,8 @@ public class PlayerLife : MonoBehaviour
     //Sound
     [SerializeField] private AudioSource DamageSoundEffect;
     [SerializeField] private AudioSource DeathSoundEffect;
+    [SerializeField] private AudioSource HeathSoundEffect;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -98,6 +100,7 @@ public class PlayerLife : MonoBehaviour
         {
             if(health != maxHealth)
             {
+                HeathSoundEffect.Play();
                 Destroy(collision.gameObject);
                 health++;
             }
@@ -105,6 +108,7 @@ public class PlayerLife : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Heart"))
         {
+            HeathSoundEffect.Play();
             Destroy(collision.gameObject);
             maxHealth++;
             health = maxHealth;

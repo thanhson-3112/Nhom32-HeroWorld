@@ -20,8 +20,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Devil's Castle.unity
     guid: 8e580d6347ee09d4899612089882f091
-  - enabled: 0
-    path: Assets/Scenes/Level.unity
-    guid: 75e7880a436b35d4cbd67390d3906e66
+  - enabled: 1
+    path: Assets/Scenes/FinishGame.unity
+    guid: 6f803b603112dc2488552d34db2ff3a1
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
