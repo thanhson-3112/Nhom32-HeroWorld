@@ -4,8 +4,10 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
+
 public class FinishLevel : MonoBehaviour
 {
+    [SerializeField] private AudioSource FinishSoundEffect;
 
     private bool levelCompleted = false;
     private void Start()
@@ -17,6 +19,7 @@ public class FinishLevel : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player" && !levelCompleted)
         {
+            FinishSoundEffect.Play();
             Invoke("CompleteLevel", 1.5f);
             levelCompleted = true;
             
