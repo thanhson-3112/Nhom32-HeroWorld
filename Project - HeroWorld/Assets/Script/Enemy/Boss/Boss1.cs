@@ -115,7 +115,7 @@ public class Boss1 : MonoBehaviour
         }
         else
         {
-            Debug.LogError("NextMap GameObject is not assigned in the inspector.");
+            Debug.LogError("Error");
         }
     }
 
@@ -127,7 +127,7 @@ public class Boss1 : MonoBehaviour
         }
         else
         {
-            Debug.LogError("NextMap GameObject is not assigned in the inspector.");
+            Debug.LogError("Error");
         }
     }
 }

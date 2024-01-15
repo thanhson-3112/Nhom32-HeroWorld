@@ -26,7 +26,7 @@ public class Boss4 : MonoBehaviour
 
     public GameObject finishLevelObject;
 
-    /*[SerializeField] private AudioSource BossAudioEffect;*/
+    
     public virtual void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -118,7 +118,7 @@ public class Boss4 : MonoBehaviour
         }
         else
         {
-            Debug.LogError("NextMap GameObject is not assigned in the inspector.");
+            Debug.LogError("Error");
         }
     }
 
@@ -130,7 +130,7 @@ public class Boss4 : MonoBehaviour
         }
         else
         {
-            Debug.LogError("NextMap GameObject is not assigned in the inspector.");
+            Debug.LogError("Error");
         }
     }
 }

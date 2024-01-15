@@ -71,5 +71,10 @@ public class Enemy1 : MonoBehaviour
             }
             playerLife.TakeDamage(damage);
         }
+        if (collision.gameObject.tag == "Trap")
+        {
+            anim.SetTrigger("EnemyDeath");
+            Destroy(gameObject, 1f);
+        }
     }
 }

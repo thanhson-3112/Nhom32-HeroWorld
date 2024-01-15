@@ -8,7 +8,6 @@ public class Enemy : MonoBehaviour
     private Rigidbody2D rb;
     private Animator anim;
 
-
     [SerializeField] protected float health = 3f;
     [SerializeField] protected float recollLength = 0.2f;
     [SerializeField] protected float recollFactor = 3.5f;

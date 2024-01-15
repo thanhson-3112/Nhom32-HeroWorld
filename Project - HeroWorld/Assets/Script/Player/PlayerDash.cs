@@ -49,10 +49,6 @@ public class PlayerDash : MonoBehaviour
     [SerializeField] private AudioSource HitSoundEffect;
 
 
-
-
-
-
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -163,7 +159,7 @@ public class PlayerDash : MonoBehaviour
             RunSoundEffect.Stop();
         }
         rb.velocity = new Vector2(move * speed, rb.velocity.y);
-        // Reset hasDashed when grounded
+        // Reset hasDashed khi cham dat
         if (canJump)
         {
             hasDashed = false;

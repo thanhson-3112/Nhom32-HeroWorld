@@ -19,11 +19,13 @@ public class PlayerLife : MonoBehaviour
     //CHeckPoint
     private Vector2 respawnPoint;
     public GameObject startPoint;
-
+   
     //Sound
     [SerializeField] private AudioSource DamageSoundEffect;
     [SerializeField] private AudioSource DeathSoundEffect;
     [SerializeField] private AudioSource HeathSoundEffect;
+    [SerializeField] private AudioSource CheckpointSoundEffect;
+
 
     private void Start()
     {
@@ -84,7 +86,7 @@ public class PlayerLife : MonoBehaviour
         rb.bodyType = RigidbodyType2D.Static;
         anim.SetTrigger("death");
 
-        Invoke("Respawn", 1.7f); 
+        Invoke("Respawn", 1.7f);
     }
 
     private void Respawn()
@@ -114,12 +116,11 @@ public class PlayerLife : MonoBehaviour
             health = maxHealth;
         }
 
-
-
         if (collision.CompareTag("CheckPoint"))
         {
+            CheckpointSoundEffect.Play();
             respawnPoint = collision.transform.position;
-            Debug.Log("Checkpoint reached. Respawn point updated to: " + respawnPoint);
+            Debug.Log("Checkpoint" + respawnPoint);
         }
     }
     
