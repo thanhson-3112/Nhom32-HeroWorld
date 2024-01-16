@@ -10,14 +10,13 @@ public class BossMovement : MonoBehaviour
 
     //Follow player
     public Transform playerTransform;
-    public bool isChasing;
-    public float chaseDistance = 5;
+    private bool isChasing;
+    public float chaseDistance = 10f;
     void Start()
     {
 
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (isChasing)

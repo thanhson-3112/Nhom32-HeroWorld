@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class FinishGame : MonoBehaviour
 {
@@ -20,7 +21,6 @@ public class FinishGame : MonoBehaviour
             FinishSoundEffect.Play();
             Invoke("CompleteLevel", 1.5f);
             gameCompleted = true;
-
         }
     }
 
